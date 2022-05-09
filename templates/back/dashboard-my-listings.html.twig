@@ -1,0 +1,21 @@
+{% extends 'baseback.html.twig' %}
+
+{% block body %}
+
+    <main id="main" class="main" style="margin-left: 280px;">
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">        <h2>Ajouter Un Produit</h2>
+
+                    {{form_start(f,{'attr':{novalidate:'novalidate'}})}}
+                    {{ form_row(f.nom) }}
+                    {{ form_end(f) }}
+
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+{% endblock %}
