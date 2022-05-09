@@ -1,0 +1,40 @@
+{% block body %}
+    <h2 class="heading" style="text-align: center;">
+        Messagerie </h2>
+    <hr>
+
+
+
+    <table class="table"  style="width:100%">
+    <thead>
+     <tr>
+         <th style="width:20%" >Par </th>
+         <th >Contenu</th>
+         <th style="width:30%" >Date</th>
+     </tr>
+    </thead>
+        <tbody>
+
+        {% for n in nom %}
+    {% for m in messag %}
+        {% if m.idpatient == m.idEnv %}
+x
+        <tr>
+        <td>{{ n.nom}} </td>
+        <td>{{ m.Contenu }}</td>
+        <td>{{ m.dateRecep | date('l d F - H:i') }}</td>
+       </tr>
+
+        {% else %}
+            <tr>
+                <td>Moi </td>
+                <td>{{ m.Contenu }}</td>
+                <td>{{ m.dateRecep | date('l d F - H:i') }}</td>
+            </tr>
+        {% endif %}
+    {% endfor %}
+    {% endfor %}
+    </tbody>
+    </table>
+
+{% endblock %}

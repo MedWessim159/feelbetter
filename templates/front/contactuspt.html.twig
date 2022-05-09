@@ -1,0 +1,424 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <body>
+
+
+    <div id="page-title" class="padding-tb-30px gradient-white">
+        <div class="container text-center">
+            <ol class="breadcrumb opacity-5">
+                <li><a href="#">Home</a></li>
+                <li class="active">Contact Us</li>
+            </ol>
+            <h1 class="font-weight-300">Contact Us</h1>
+        </div>
+    </div>
+
+    <div class="container" style=" padding-bottom: 5%;">
+        <div class="row">
+            <section class="discussions">
+                <div class="discussion search">
+                    <div class="searchbar">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                        <input type="text" placeholder="Search..."/>
+                    </div>
+                </div>
+                {% for p in expert %}
+                    <div class="discussion ">
+                        <div class="photo">
+                        </div>
+                        <div class="desc-contact" >
+                            <a href="{{ path('app_messagerie_pt',{'idexpert':p.idExpert}) }}" class="name">{{ p.nom }} {{ p.prenom }}</a>
+                            <p class="message"></p>
+                        </div>
+                        <div class="timer">1 min</div>
+                    </div>
+                {% endfor %}
+            </section>
+
+            <section class="chat">
+                <div class="header-chat">
+                    <i class="icon" aria-hidden="true"></i>
+                    {% for t in n %}
+                    <p class="name">{{ t.nom | lower}} {{ t.prenom | upper}}</p>
+                    <a href="{{ path('listt',{'id':t.idexpert}) }}" style="margin-left: 400px;"><i class="bi bi-file-earmark-pdf"></i></a>
+
+
+                </div>
+
+                <div class="messages-chat"   style="height: 540px; overflow-y: scroll;">
+                    {{ dump(messag) }}
+                    {% for m in messag %}
+                        {% if  m.IdEnv == m.idexpert and m.IdRec == m.idpatient  %}
+                            <div class="message ">
+                                <p class="text"> {{ m.Contenu }} </p>
+                            </div>
+                            {#   <p class="time"> {{ m.dateRecep | date('l d F - H:i') }}</p> #}
+                        {% elseif  m.IdEnv == m.idpatient and m.IdRec == m.idexpert   %}
+                            <div class="message " >
+                                <div class="response" >
+                                    <p class="text"> {{ m.Contenu }}</p>
+
+
+                                    <p class="response-time time" >
+                                        <button type="button" class="btn btn-primary btn-lg btn-floating btn-sm mb-2 " >
+
+                                            <a href="{{ path('modifierptAction',{'id':m.idMessage}) }}"> <i class="bi bi-gear white" style="color:white" ></i> </a>
+                                        </button>
+                                        <button type="button" class="btn btn-primary btn-lg btn-floating btn-sm mb-2">
+
+                                            <a href="{{ path('suppptAction',{'id':m.idMessage}) }}"> <i class="bi bi-trash" style="color:white"></i> </a>
+                                        </button>
+                                    </p>
+                                </div>
+
+                                {#  <button type="button" id="button" class="btn-outline-success clickable" style="color:black;" onclick="$(this).toggleClass('btn-success')"  >
+
+                                    <i class="bi bi-hand-thumbs-up"  ></i>
+                                </button>
+                                <button type="button" id="button1" class="btn-outline-danger clickable" onclick="setColor('button', '#101010')"  style="color:black;" >
+
+                                     <i class="bi bi-hand-thumbs-down" ></i>
+                                </button>
+
+                                </p> #}
+
+                            </div>
+                            {#  <p class="response-time time"> {{ m.dateRecep | date('l d F - H:i') }}</p> #}
+                        {% endif %}
+                    {% endfor %}
+                    {% endfor %}
+
+                </div>
+                {{ form_start(form,{'attr':{novalidate:'novalidate'}}) }}
+                <div class="footer-chat">
+                    <div class="col-sm-12">
+                        <form class="float-sm-right">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    {{ form_widget(form.Contenu , {  'id':"contenu" , 'attr' : {'placeholder':"chat message" , 'class':"form-control"}})}}
+                                    {{ form_widget(form.Send , {'attr': {'class':"btn btn-primary bi bi-send"}})}}
+                                </div>
+                                {{ form_errors(form)}}
+                            </div>
+                        </form>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+    </script>
+
+
+
+    <style>
+
+
+        .discussions {
+            width: 35%;
+            height: 800px;
+            box-shadow: 0px 8px 10px rgba(0,0,0,0.20);
+            overflow: hidden;
+            background-color: #F8F8F8;
+            display: inline-block;
+        }
+
+        .discussions .discussion {
+            width: 100%;
+            height: 90px;
+            background-color: #FAFAFA;
+            border-bottom: solid 1px #E0E0E0;
+            display:flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .discussions .search {
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            color: #E0E0E0;
+        }
+
+        .discussions .search .searchbar {
+            height: 40px;
+            background-color: #FFF;
+            width: 70%;
+            padding: 0 20px;
+            border-radius: 50px;
+            border: 1px solid #EEEEEE;
+            display:flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .discussions .search .searchbar input {
+            margin-left: 15px;
+            height:38px;
+            width:100%;
+            border:none;
+            font-family: 'Montserrat', sans-serif;;
+        }
+
+        .discussions .search .searchbar *::-webkit-input-placeholder {
+            color: #E0E0E0;
+        }
+        .discussions .search .searchbar input *:-moz-placeholder {
+            color: #E0E0E0;
+        }
+        .discussions .search .searchbar input *::-moz-placeholder {
+            color: #E0E0E0;
+        }
+        .discussions .search .searchbar input *:-ms-input-placeholder {
+            color: #E0E0E0;
+        }
+
+        .discussions .message-active {
+            width: 98.5%;
+            height: 90px;
+            background-color: #FFF;
+            border-bottom: solid 1px #E0E0E0;
+        }
+
+        .discussions .discussion .photo {
+            margin-left:20px;
+            display: block;
+            width: 45px;
+            height: 45px;
+            background: #E6E7ED;
+            -moz-border-radius: 50px;
+            -webkit-border-radius: 50px;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .online {
+            position: relative;
+            top: 30px;
+            left: 35px;
+            width: 13px;
+            height: 13px;
+            background-color: #8BC34A;
+            border-radius: 13px;
+            border: 3px solid #FAFAFA;
+        }
+
+        .desc-contact {
+            height: 43px;
+            width:50%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .discussions .discussion .name {
+            margin: 0 0 0 20px;
+            font-family:'Montserrat', sans-serif;
+            font-size: 11pt;
+            color:#515151;
+        }
+
+        .discussions .discussion .message {
+            margin: 6px 0 0 20px;
+            font-family:'Montserrat', sans-serif;
+            font-size: 9pt;
+            color:#515151;
+        }
+
+        .timer {
+            margin-left: 10%;
+            font-family:'Open Sans', sans-serif;
+            font-size: 11px;
+            padding: 3px 8px;
+            color: #BBB;
+            background-color: #FFF;
+            border: 1px solid #E5E5E5;
+            border-radius: 15px;
+        }
+
+        .chat {
+            width: calc(65% - 85px);
+        }
+
+        .header-chat {
+            background-color: #FFF;
+            height: 90px;
+            box-shadow: 0px 3px 2px rgba(0,0,0,0.100);
+            display:flex;
+            align-items: center;
+
+        }
+
+        .chat .header-chat .icon {
+            margin-left: 30px;
+            color:#515151;
+            font-size: 14pt;
+        }
+
+        .chat .header-chat .name {
+            margin: 0 0 0 20px;
+            text-transform: uppercase;
+            font-family:'Montserrat', sans-serif;
+            font-size: 13pt;
+            color:#515151;
+        }
+
+        .chat .header-chat .right {
+            position: absolute;
+            right: 40px;
+        }
+
+        .chat .messages-chat {
+            padding: 25px 35px;
+
+        }
+
+        .chat .messages-chat .message {
+            display:flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .chat .messages-chat .message .photo {
+            display: block;
+            width: 45px;
+            height: 45px;
+            background: #E6E7ED;
+            -moz-border-radius: 50px;
+            -webkit-border-radius: 50px;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .chat .messages-chat .text {
+            margin: 0 35px;
+            background-color: #f6f6f6;
+            padding: 15px;
+            border-radius: 12px;
+        }
+
+        .text-only {
+            margin-left: 45px;
+        }
+
+        .time {
+            font-size: 10px;
+            color:lightgrey;
+            margin-bottom:10px;
+            margin-left: 85px;
+        }
+
+        .response-time {
+            float: right;
+            margin-right: 40px !important;
+        }
+
+        .response {
+            float: right;
+            margin-right: 0px !important;
+            margin-left:auto; /* flexbox alignment rule */
+        }
+
+        .response .text {
+            background-color: #e3effd !important;
+        }
+
+        .footer-chat {
+            width: calc(38% - 40px);
+            height: 60px;
+            display:flex;
+            align-items: center;
+            position:absolute;
+            bottom: 0;
+            background-color: transparent;
+            border-top: 2px solid #EEE;
+            padding-top: 100px;
+            padding-bottom: 50px;
+
+        }
+
+        .chat .footer-chat .icon {
+            margin-left: 30px;
+            color:#C0C0C0;
+            font-size: 14pt;
+        }
+
+        .chat .footer-chat .send {
+            color:#fff;
+            background-color: #4f6ebd;
+            position: absolute;
+            right: 50px;
+            padding: 12px 12px 12px 12px;
+            border-radius: 50px;
+            font-size: 14pt;
+        }
+
+        .chat .footer-chat .name {
+            margin: 0 0 0 20px;
+            text-transform: uppercase;
+            font-family:'Montserrat', sans-serif;
+            font-size: 13pt;
+            color:#515151;
+        }
+
+        .chat .footer-chat .right {
+            position: absolute;
+            right: 40px;
+        }
+
+        .write-message {
+            border:none !important;
+            width:60%;
+            height: 50px;
+            margin-left: 20px;
+            padding: 10px;
+        }
+
+        .footer-chat *::-webkit-input-placeholder {
+            color: #C0C0C0;
+            font-size: 13pt;
+        }
+        .footer-chat input *:-moz-placeholder {
+            color: #C0C0C0;
+            font-size: 13pt;
+        }
+        .footer-chat input *::-moz-placeholder {
+            color: #C0C0C0;
+            font-size: 13pt;
+            margin-left:5px;
+        }
+        .footer-chat input *:-ms-input-placeholder {
+            color: #C0C0C0;
+            font-size: 13pt;
+        }
+
+        .clickable {
+            cursor: pointer;
+        }
+    </style>
+    <script type="text/javascript">
+        function reply_click(clicked_id)
+        {
+            alert(clicked_id);
+        }
+    </script>
+
+    <script>
+        $('#contenu').emojioneArea({
+            pickerPosition:top
+        });
+
+    </script>
+
+    </body>
+{% endblock %}
