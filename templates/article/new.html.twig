@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Article{% endblock %}
+
+{% block body %}
+
+    <div style=""display: flex;align-items: center;justify-content: center;margin-top:150px;">
+    <div class="card">
+        <div class="card-body"><h5 class="card-title">Ajouter un article</h5>
+
+            {{ include('article/_form.html.twig') }}
+
+            <a href="{{ path('app_article_index') }}">back to list</a>
+
+                </form_end>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

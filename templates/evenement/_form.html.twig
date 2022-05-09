@@ -1,0 +1,54 @@
+<div class="form-group">
+    {{ form_start(form,{ attr: {class:'form-control'}
+    }) }}
+
+    <div class="col-md-10">
+
+        {{ form_label(form.nomEvent,"nom") }}
+        {{ form_widget(form.nomEvent)}}
+        {{ form_errors(form.nomEvent) }}
+    </div>
+
+    <div class="col-md-10">
+
+        {{ form_label(form.descriptionEvent,"descriptionEvent") }}
+        {{ form_widget(form.descriptionEvent)}}
+        {{ form_errors(form.descriptionEvent) }}
+    </div>
+    <div class="col-md-10">
+
+        {{ form_label(form.prixEvent,"prixEvent") }}
+        {{ form_widget(form.prixEvent)}}
+        {{ form_errors(form.prixEvent) }}
+    </div>
+    <div class="col-md-10">
+
+        {{ form_label(form.nbrPlace,"nbrPlace") }}
+        {{ form_widget(form.nbrPlace)}}
+        {{ form_errors(form.nbrPlace) }}
+    </div>
+    <div class="col-md-10">
+
+        {{ form_label(form.date,"date") }}
+        {{ form_widget(form.date)}}
+        {{ form_errors(form.date) }}
+    </div>
+    <div class="col-md-10">
+
+        {{ form_label(form.image,"Image") }}
+        <button class="btn"> {{ form_widget(form.image)}}</button>
+        {{ form_widget(form.image)}}
+        {{ form_errors(form.image) }}
+    </div>
+
+
+    {{ form_widget(form) }}
+
+
+
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+
+
+
+
