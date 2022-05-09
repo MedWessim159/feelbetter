@@ -1,0 +1,180 @@
+{% extends "base.html.twig" %}
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}" />
+            <!-- owl Carousel assets -->
+            <link href="{{ asset('assets/css/owl.carousel.css') }}" rel="stylesheet">
+            <link href="{{ asset('assets/css/owl.theme.css') }}" rel="stylesheet">
+            <!-- bootstrap -->
+            <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+            <!-- hover anmation -->
+            <link rel="stylesheet" href="{{ asset('assets/css/hover-min.css') }} ">
+            <!-- flag icon -->
+            <link rel="stylesheet" href="{{ asset('assets/css/flag-icon.min.css') }}">
+            <!-- main style -->
+            <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+            <!-- colors -->
+            <link rel="stylesheet" href="{{ asset('assets/css/colors/main.css') }}">
+            <!-- elegant icon -->
+            <link rel="stylesheet" href="{{ asset('assets/css/elegant_icon.css') }}">
+            <!-- admin style -->
+            <link rel="stylesheet" href="{{ asset('assets/css/sb-admin.css') }}">
+        {% endblock %}
+
+        {% block javascripts %}
+            <script  src="{{ asset('assets/js/sticky-sidebar.js') }}"></script>
+            <script  src="{{ asset('assets/js/YouTubePopUp.jquery.js') }}"></script>
+            <script  src="{{ asset('assets/js/owl.carousel.min') }}.js"></script>
+            <script  src="{{ asset('assets/js/imagesloaded.min.js') }}"></script>
+            <script  src="{{ asset('assets/js/wow.min.js') }}"></script>
+            <script  src="{{ asset('assets/js/custom.js"></') }}"></script>
+            <script  src="{{ asset('assets/js/popper.min.js') }}"></script>
+            <script  src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+            <script defer src="{{ asset('https://use.fontawesome.com/releases/v5.0.6/js/all.js') }}"></script>
+            <script  src="{{ asset('assets/js/jquery-3.2.1.min.js') }}"></script>
+        {% endblock %}
+        {% block body %}
+            <header class="background-white box-shadow fixed-top z-index-99">
+                <nav class="container-fluid header-in">
+                    <div class="row">
+                        <div class="col-xl-2 col-lg-2">
+                            <a id="logo" href="index.html" class="d-inline-block margin-tb-15px"><img src="assets/img/logo-1.png" alt=""></a>
+                            <a class="mobile-toggle padding-13px background-main-color" href="#"><i class="fas fa-bars"></i></a>
+                        </div>
+                        <div class="col-xl-6 col-lg-8 position-inherit">
+                            <ul id="menu-main" class="nav-menu float-lg-right link-padding-tb-20px">
+                                <li><a href="index.html">Home</a>
+                                </li>
+                                <li ><a href="{{ path('index_patient') }}">Patient</a>
+                                </li>
+                                <li ><a href="#">Experts</a>
+                                </li>
+                                <li><a href="#">ShopOWners</a>
+                                </li>
+                                <li><a href="#">Livreur</a>
+                                </li>
+                                <li><a href="page-contact-us.html">Conact Us</a></li>
+                            </ul>
+
+                        </div>
+                        <div class="col-xl-4 d-none d-xl-block">
+                            <hr class="margin-bottom-0px d-block d-sm-none">
+                            <a href="dashboard-add-listing.html" class="btn btn-sm border-radius-30 margin-tb-15px text-white background-second-color  box-shadow float-right padding-lr-25px margin-left-30px"><i class="fas fa-plus-circle  margin-right-7px"></i>  Add list</a>
+
+
+                            <div class="nav-item float-left">
+                                <a href="#" class="nav-link margin-top-10px" data-toggle="modal" data-target="#exampleModal">
+                                    <div class="text-grey-3"><i class="fa fa-fw fa-sign-out-alt"></i>Logout</div>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </nav>
+            </header>
+            <nav class="navbar navbar-expand-lg navbar-dark z-index-9  fixed-top" id="mainNav">
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav navbar-sidenav background-main-color admin-nav" id="admin-nav">
+                        <li class="nav-item">
+                            <span class="nav-title-text">Main</span>
+                        </li>
+                        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                            <a class="nav-link active" href="dashboard-home.html">
+                                <i class="fas fa-fw fa-home"></i>
+                                <span class="nav-link-text">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My items">
+                            <a class="nav-link" href="dashboard-my-listings.html">
+                                <i class="fa fa-fw fa-table"></i>
+                                <span class="nav-link-text">My Listings</span>
+                            </a>
+                        </li>
+                        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My Favorites">
+                            <a class="nav-link" href="dashboard-my-favorites.html">
+                                <i class="fa fa-fw fa-heart"></i>
+                                <span class="nav-link-text">My Favorites</span>
+                            </a>
+                        </li>
+                        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Reviews">
+                            <a class="nav-link" href="dashboard-reviews.html">
+                                <i class="fa fa-fw fa-star"></i>
+                                <span class="nav-link-text">Reviews</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-title-text">Example Pages</span>
+                        </li>
+                        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Bookings">
+                            <a class="nav-link" href="dashboard-bookings.html">
+                                <i class="far fa-fw fa-bookmark"></i>
+                                <span class="nav-link-text">Bookings</span>
+                            </a>
+                        </li>
+                        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Add Listing">
+                            <a class="nav-link" href="dashboard-add-listing.html">
+                                <i class="fa fa-fw fa-plus-circle"></i>
+                                <span class="nav-link-text">Add Listing</span>
+                            </a>
+                        </li>
+                        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Packages">
+                            <a class="nav-link" href="dashboard-packages.html">
+                                <i class="far fa-fw fa-list-alt"></i>
+                                <span class="nav-link-text">Packages</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <span class="nav-title-text">User Area</span>
+                        </li>
+                        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My Profile">
+                            <a class="nav-link" href="dashboard-my-profile.html">
+                                <i class="fa fa-fw fa-user-circle"></i>
+                                <span class="nav-link-text">My Profile</span>
+                            </a>
+                        </li>
+                        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Sing Out">
+                            <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal">
+                                <i class="fa fa-fw fa-sign-out-alt"></i>
+                                <span class="nav-link-text">Sing Out</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        <div class="content-wrapper">
+        <div class="container-fluid overflow-hidden">
+            <div class="row margin-tb-90px margin-lr-10px sm-mrl-0px">
+                <!-- Page Title -->
+                <div id="page-title" class="padding-30px background-white full-width">
+                    <div class="container">
+                        <ol class="breadcrumb opacity-5">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Dashboard</a></li>
+                            <li class="active">Experts</li>
+                        </ol>
+                        <h1 class="font-weight-300">Experts</h1>
+                    </div>
+                </div>
+                <!-- // Page Title -->
+                {% for expert in e %}
+                <div class="row margin-top-45px">
+
+                    <!-- Booking item -->
+                    <div class="col-lg-6 margin-bottom-45px full-width">
+                        <div class="background-white thum-hover box-shadow  hvr-float">
+                            <div class="padding-30px full-width">
+                                <img src="http://placehold.it/60x60" class="float-left margin-right-20px border-radius-60 margin-bottom-20px" alt="">
+                                <div class="margin-left-85px">
+                                    <a class="d-block text-dark text-medium margin-bottom-5px" href="#">{{ expert.nom }} {{ expert.prenom }}  </a>
+                                    <div class="d-block padding-tb-5px">Date :  <a href="#" class="text-main-color">{{expert.datenaissance | date('d-m-Y H:i:s') }}</a></div>
+                                    <div class="d-block padding-tb-5px">Adress <a href="#" class="text-main-color">{{expert.Adresse}}</a></div>
+                                    <div class="d-block padding-tb-5px">Email :  <a href="#" class="text-main-color">{{expert.adressemail}}</a></div>
+                                    <div class="d-block padding-tb-5px">Phone  :  <a href="#" class="text-main-color">{{expert.tel}}</a></div>
+                                    <a href="" class="d-inline-block text-grey-2 text-up-small"><i class="far fa-file-alt"></i> Approve</a>
+                                    <a href="{{ path('remove_expert', {'id':expert.idExpert}) }}" class="d-inline-block margin-lr-20px text-grey-2 text-up-small"><i class="far fa-window-close"></i> Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+        {% endblock %}
