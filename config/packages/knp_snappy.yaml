@@ -1,0 +1,13 @@
+knp_snappy:
+  pdf:
+    enabled:    true
+    binary:     C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf #"\"C:/Program Files (x86)/wkhtmltopdf/wkhtmltopdf.exe\"" for Windows users
+    options:    []
+  image:
+    enabled:    true
+    binary:     C:\Program Files\wkhtmltopdf\bin\wkhtmltoimage #"\"C:/Program Files (x86)/wkhtmltopdf/wkhtmltoimage.exe\"" for Windows users
+    options:    []
+
+  temporary_folder: "%kernel.cache_dir%/snappy"
+
+  process_timeout: 20 # In seconds
